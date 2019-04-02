@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BootcampModelStoreContainer" CdmEntityContainer="MyContext">
+    <EntitySetMapping Name="TB_M_Items">
+      <EntityTypeMapping TypeName="BootcampModel.TB_M_Items">
+        <MappingFragment StoreEntitySet="TB_M_Items">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_M_Sell">
+      <EntityTypeMapping TypeName="BootcampModel.TB_M_Sell">
+        <MappingFragment StoreEntitySet="TB_M_Sell">
+          <ScalarProperty Name="Orderdate" ColumnName="Orderdate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_M_Suppliers">
+      <EntityTypeMapping TypeName="BootcampModel.TB_M_Suppliers">
+        <MappingFragment StoreEntitySet="TB_M_Suppliers">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_T_TransactionDetail">
+      <EntityTypeMapping TypeName="BootcampModel.TB_T_TransactionDetail">
+        <MappingFragment StoreEntitySet="TB_T_TransactionDetail">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_dbo_Items_dbo_Suppliers_Suppliers_Id" TypeName="BootcampModel.FK_dbo_Items_dbo_Suppliers_Suppliers_Id" StoreEntitySet="TB_M_Items">
+      <EndProperty Name="TB_M_Items">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <EndProperty Name="TB_M_Suppliers">
+        <ScalarProperty Name="Id" ColumnName="Suppliers_Id" />
+      </EndProperty>
+      <Condition ColumnName="Suppliers_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TB_T_TransactionDetail_ToTable" TypeName="BootcampModel.FK_TB_T_TransactionDetail_ToTable" StoreEntitySet="TB_T_TransactionDetail">
+      <EndProperty Name="TB_T_TransactionDetail">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <EndProperty Name="TB_M_Items">
+        <ScalarProperty Name="Id" ColumnName="TB_M_Items_Item_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TB_T_TransactionDetailSell_ToTable" TypeName="BootcampModel.FK_TB_T_TransactionDetailSell_ToTable" StoreEntitySet="TB_T_TransactionDetail">
+      <EndProperty Name="TB_T_TransactionDetail">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <EndProperty Name="TB_M_Sell">
+        <ScalarProperty Name="Id" ColumnName="TB_M_Sell_Sell_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
